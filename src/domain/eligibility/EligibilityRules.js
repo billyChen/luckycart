@@ -1,7 +1,9 @@
-export class EligibilityRules {
-    constructor() {}
+class EligibilityRules {
+  constructor() {}
 
-    check(cart, criteria) {
-        
-    }
+  static check(cart, criterias) {
+    return criterias.conditions.every((condition) => condition.evaluate(cart));
+  }
 }
+
+module.exports = EligibilityRules;
