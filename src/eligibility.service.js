@@ -1,3 +1,9 @@
+const { Cart } = require("./domain/cart/Cart");
+const { Criteria } = require("./domain/eligibility/Criteria");
+const { EligibilityRules } = require("./domain/eligibility/EligibilityRules");
+const { CartMapper } = require("./mappers/CartMapper");
+const { CriteriaMapper } = require("./mappers/CriteriaMapper");
+
 class EligibilityService {
   /**
    * Compare cart data with criteria to compute eligibility.
@@ -7,9 +13,12 @@ class EligibilityService {
    * @param criteria
    * @return {boolean}
    */
-  isEligible(cart, criteria) {
+  isEligible(cartDto, criteriaDto) {
+    const cart = CartMapper.toDomain(cartDto);
+    const criterias = CriteriaMapper.toDomain(criteriaDto);
+
     // TODO: compute cart eligibility here.
-    return false;
+    return EligibilityRules.check(cart, criterias);
   }
 }
 
