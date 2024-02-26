@@ -1,4 +1,5 @@
 const Criteria = require("../domain/eligibility/Criteria");
+const GtCondition = require("../domain/eligibility/conditions/GtCondition");
 const BasicCondition = require("../domain/eligibility/conditions/BasicCondition");
 
 class CriteriaMapper {
@@ -8,6 +9,9 @@ class CriteriaMapper {
     }
 
     const conditions = Object.entries(criterias).map(([key, value]) => {
+      if (value.gt) {
+        return new GtCondition(key, value.gt);
+      }
       return new BasicCondition(key, value);
     });
 
