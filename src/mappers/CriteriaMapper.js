@@ -6,6 +6,7 @@ const GteCondition = require("../domain/eligibility/conditions/GteCondition");
 const LteCondition = require("../domain/eligibility/conditions/LteCondition");
 const InCondition = require("../domain/eligibility/conditions/InCondition");
 const AndCondition = require("../domain/eligibility/conditions/AndCondition");
+const OrCondition = require("../domain/eligibility/conditions/OrCondition");
 
 class CriteriaMapper {
   static toDomain(criterias) {
@@ -60,6 +61,34 @@ class CriteriaMapper {
           }
         );
         return new AndCondition(nestedConditions);
+      }
+
+      if (value.or) {
+        const nestedConditions = Object.entries(value.or).map(
+          ([nestedKey, nestedValue]) => {
+            if (nestedKey === "gt") {
+              return new GtCondition(key, nestedValue);
+            }
+
+            if (nestedKey === "gte") {
+              return new GteCondition(key, nestedValue);
+            }
+
+            if (nestedKey === "lt") {
+              return new LtCondition(key, nestedValue);
+            }
+
+            if (nestedKey === "lte") {
+              return new LteCondition(key, nestedValue);
+            }
+
+            if (nestedKey === "in") {
+              return new InCondition(key, nestedValue);
+            }
+            // TODO: should handle and / or conditions here too
+          }
+        );
+        return new OrCondition(nestedConditions);
       }
 
       return new BasicCondition(key, value);

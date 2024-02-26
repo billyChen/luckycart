@@ -232,22 +232,22 @@ describe("Eligibility", () => {
     });
   });
 
-  // describe('Or condition', () => {
-  //   it('should not be eligible when or condition is not fulfilled', () => {
-  //     const cart = {total: 0};
-  //     const criteria = {total: {or: {gt: 10, gt: 20}}};
-  //     const eligibilityService = new EligibilityService();
-  //     const actualEligibility = eligibilityService.isEligible(cart, criteria);
-  //     should(actualEligibility).be.false();
-  //   });
-  //   it('should be eligible when or condition is fulfilled', () => {
-  //     const cart = {total: 0};
-  //     const criteria = {total: {or: {gt: 10, lt: 20}}};
-  //     const eligibilityService = new EligibilityService();
-  //     const actualEligibility = eligibilityService.isEligible(cart, criteria);
-  //     should(actualEligibility).be.true();
-  //   });
-  // });
+  describe("Or condition", () => {
+    it("should not be eligible when or condition is not fulfilled", () => {
+      const cart = { total: 0 };
+      const criteria = { total: { or: { gt: 10, gt: 20 } } };
+      const eligibilityService = new EligibilityService();
+      const actualEligibility = eligibilityService.isEligible(cart, criteria);
+      should(actualEligibility).be.false();
+    });
+    it("should be eligible when or condition is fulfilled", () => {
+      const cart = { total: 0 };
+      const criteria = { total: { or: { gt: 10, lt: 20 } } };
+      const eligibilityService = new EligibilityService();
+      const actualEligibility = eligibilityService.isEligible(cart, criteria);
+      should(actualEligibility).be.true();
+    });
+  });
 
   // describe('Sub-object condition', () => {
   //   it('should not be eligible when sub object condition is not fulfilled (first level field does not exist)', () => {
