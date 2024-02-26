@@ -4,6 +4,7 @@ const BasicCondition = require("../domain/eligibility/conditions/BasicCondition"
 const LtCondition = require("../domain/eligibility/conditions/LtCondition");
 const GteCondition = require("../domain/eligibility/conditions/GteCondition");
 const LteCondition = require("../domain/eligibility/conditions/LteCondition");
+const InCondition = require("../domain/eligibility/conditions/InCondition");
 
 class CriteriaMapper {
   static toDomain(criterias) {
@@ -26,6 +27,10 @@ class CriteriaMapper {
 
       if (value.lte) {
         return new LteCondition(key, value.lte);
+      }
+
+      if (value.in) {
+        return new InCondition(key, value.in);
       }
 
       return new BasicCondition(key, value);

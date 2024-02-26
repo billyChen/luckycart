@@ -191,22 +191,22 @@ describe("Eligibility", () => {
     });
   });
 
-  // describe('In condition', () => {
-  //   it('should not be eligible when in condition is not fulfilled', () => {
-  //     const cart = {shopperId: 'shopper-id0'};
-  //     const criteria = {shopperId: {in: ['shopper-id1', 'shopper-id2']}};
-  //     const eligibilityService = new EligibilityService();
-  //     const actualEligibility = eligibilityService.isEligible(cart, criteria);
-  //     should(actualEligibility).be.false();
-  //   });
-  //   it('should be eligible when in condition is fulfilled', () => {
-  //     const cart = {shopperId: 'shopper-id1'};
-  //     const criteria = {shopperId: {in: ['shopper-id1', 'shopper-id2']}};
-  //     const eligibilityService = new EligibilityService();
-  //     const actualEligibility = eligibilityService.isEligible(cart, criteria);
-  //     should(actualEligibility).be.true();
-  //   });
-  // });
+  describe("In condition", () => {
+    it("should not be eligible when in condition is not fulfilled", () => {
+      const cart = { shopperId: "shopper-id0" };
+      const criteria = { shopperId: { in: ["shopper-id1", "shopper-id2"] } };
+      const eligibilityService = new EligibilityService();
+      const actualEligibility = eligibilityService.isEligible(cart, criteria);
+      should(actualEligibility).be.false();
+    });
+    it("should be eligible when in condition is fulfilled", () => {
+      const cart = { shopperId: "shopper-id1" };
+      const criteria = { shopperId: { in: ["shopper-id1", "shopper-id2"] } };
+      const eligibilityService = new EligibilityService();
+      const actualEligibility = eligibilityService.isEligible(cart, criteria);
+      should(actualEligibility).be.true();
+    });
+  });
 
   // describe('And condition', () => {
   //   it('should not be eligible when and condition is not fulfilled (none)', () => {
