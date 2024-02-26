@@ -208,29 +208,29 @@ describe("Eligibility", () => {
     });
   });
 
-  // describe('And condition', () => {
-  //   it('should not be eligible when and condition is not fulfilled (none)', () => {
-  //     const cart = {total: 0};
-  //     const criteria = {total: {and: {gt: 10, gt: 20}}};
-  //     const eligibilityService = new EligibilityService();
-  //     const actualEligibility = eligibilityService.isEligible(cart, criteria);
-  //     should(actualEligibility).be.false();
-  //   });
-  //   it('should not be eligible when and condition is not fulfilled (only one)', () => {
-  //     const cart = {total: 30};
-  //     const criteria = {total: {and: {gt: 10, lt: 20}}};
-  //     const eligibilityService = new EligibilityService();
-  //     const actualEligibility = eligibilityService.isEligible(cart, criteria);
-  //     should(actualEligibility).be.false();
-  //   });
-  //   it('should be eligible when and condition is fulfilled', () => {
-  //     const cart = {total: 20};
-  //     const criteria = {total: {and: {gt: 10, lt: 30}}};
-  //     const eligibilityService = new EligibilityService();
-  //     const actualEligibility = eligibilityService.isEligible(cart, criteria);
-  //     should(actualEligibility).be.true();
-  //   });
-  // });
+  describe("And condition", () => {
+    it("should not be eligible when and condition is not fulfilled (none)", () => {
+      const cart = { total: 0 };
+      const criteria = { total: { and: { gt: 10, gt: 20 } } };
+      const eligibilityService = new EligibilityService();
+      const actualEligibility = eligibilityService.isEligible(cart, criteria);
+      should(actualEligibility).be.false();
+    });
+    it("should not be eligible when and condition is not fulfilled (only one)", () => {
+      const cart = { total: 30 };
+      const criteria = { total: { and: { gt: 10, lt: 20 } } };
+      const eligibilityService = new EligibilityService();
+      const actualEligibility = eligibilityService.isEligible(cart, criteria);
+      should(actualEligibility).be.false();
+    });
+    it("should be eligible when and condition is fulfilled", () => {
+      const cart = { total: 20 };
+      const criteria = { total: { and: { gt: 10, lt: 30 } } };
+      const eligibilityService = new EligibilityService();
+      const actualEligibility = eligibilityService.isEligible(cart, criteria);
+      should(actualEligibility).be.true();
+    });
+  });
 
   // describe('Or condition', () => {
   //   it('should not be eligible when or condition is not fulfilled', () => {
