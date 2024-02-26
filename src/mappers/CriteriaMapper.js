@@ -1,6 +1,7 @@
 const Criteria = require("../domain/eligibility/Criteria");
 const GtCondition = require("../domain/eligibility/conditions/GtCondition");
 const BasicCondition = require("../domain/eligibility/conditions/BasicCondition");
+const LtCondition = require("../domain/eligibility/conditions/LtCondition");
 
 class CriteriaMapper {
   static toDomain(criterias) {
@@ -12,6 +13,11 @@ class CriteriaMapper {
       if (value.gt) {
         return new GtCondition(key, value.gt);
       }
+
+      if (value.lt) {
+        return new LtCondition(key, value.lt);
+      }
+
       return new BasicCondition(key, value);
     });
 

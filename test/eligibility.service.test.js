@@ -119,29 +119,29 @@ describe("Eligibility", () => {
       should(actualEligibility).be.true();
     });
   });
-  // describe('Lt condition', () => {
-  //   it('should not be eligible when lt condition is not fulfilled', () => {
-  //     const cart = {total: 30};
-  //     const criteria = {total: {lt: 20}};
-  //     const eligibilityService = new EligibilityService();
-  //     const actualEligibility = eligibilityService.isEligible(cart, criteria);
-  //     should(actualEligibility).be.false();
-  //   });
-  //   it('should not be eligible when lt condition is not fulfilled (equal)', () => {
-  //     const cart = {total: 20};
-  //     const criteria = {total: {lt: 20}};
-  //     const eligibilityService = new EligibilityService();
-  //     const actualEligibility = eligibilityService.isEligible(cart, criteria);
-  //     should(actualEligibility).be.false();
-  //   });
-  //   it('should be eligible when lt condition is fulfilled', () => {
-  //     const cart = {total: 10};
-  //     const criteria = {total: {lt: 20}};
-  //     const eligibilityService = new EligibilityService();
-  //     const actualEligibility = eligibilityService.isEligible(cart, criteria);
-  //     should(actualEligibility).be.true();
-  //   });
-  // });
+  describe("Lt condition", () => {
+    it("should not be eligible when lt condition is not fulfilled", () => {
+      const cart = { total: 30 };
+      const criteria = { total: { lt: 20 } };
+      const eligibilityService = new EligibilityService();
+      const actualEligibility = eligibilityService.isEligible(cart, criteria);
+      should(actualEligibility).be.false();
+    });
+    it("should not be eligible when lt condition is not fulfilled (equal)", () => {
+      const cart = { total: 20 };
+      const criteria = { total: { lt: 20 } };
+      const eligibilityService = new EligibilityService();
+      const actualEligibility = eligibilityService.isEligible(cart, criteria);
+      should(actualEligibility).be.false();
+    });
+    it("should be eligible when lt condition is fulfilled", () => {
+      const cart = { total: 10 };
+      const criteria = { total: { lt: 20 } };
+      const eligibilityService = new EligibilityService();
+      const actualEligibility = eligibilityService.isEligible(cart, criteria);
+      should(actualEligibility).be.true();
+    });
+  });
 
   // describe('Gte condition', () => {
   //   it('should not be eligible when gte condition is not fulfilled', () => {
