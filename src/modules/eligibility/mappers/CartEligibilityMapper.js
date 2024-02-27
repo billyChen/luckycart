@@ -1,4 +1,4 @@
-const CartEligibility = require("../domain/eligibility/CartEligibility");
+const CartEligibility = require("../domain/CartEligibility");
 
 class CartEligibilityMapper {
   static toDomain(attributes) {

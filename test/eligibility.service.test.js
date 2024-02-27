@@ -249,113 +249,113 @@ describe("Eligibility", () => {
     });
   });
 
-  // describe('Sub-object condition', () => {
-  //   it('should not be eligible when sub object condition is not fulfilled (first level field does not exist)', () => {
-  //     const cart = {};
-  //     const criteria = {'products.quantity': 1};
-  //     const eligibilityService = new EligibilityService();
-  //     const actualEligibility = eligibilityService.isEligible(cart, criteria);
-  //     should(actualEligibility).be.false();
-  //   });
-  //   it('should not be eligible when sub object condition is not fulfilled (second level field does not exist)', () => {
-  //     const cart = {products:{}};
-  //     const criteria = {'products.quantity': 1};
-  //     const eligibilityService = new EligibilityService();
-  //     const actualEligibility = eligibilityService.isEligible(cart, criteria);
-  //     should(actualEligibility).be.false();
-  //   });
-  //   it('should not be eligible when sub object condition is not fulfilled (wrong value)', () => {
-  //     const cart = {products:{quantity:2}};
-  //     const criteria = {'products.quantity': 1};
-  //     const eligibilityService = new EligibilityService();
-  //     const actualEligibility = eligibilityService.isEligible(cart, criteria);
-  //     should(actualEligibility).be.false();
-  //   });
-  //   it('should be eligible when sub object condition is fulfilled', () => {
-  //     const cart = {products:{quantity:1}};
-  //     const criteria = {'products.quantity': 1};
-  //     const eligibilityService = new EligibilityService();
-  //     const actualEligibility = eligibilityService.isEligible(cart, criteria);
-  //     should(actualEligibility).be.true();
-  //   });
-  //   it('should not be eligible when array sub object condition is not fulfilled', () => {
-  //     const cart = {products:[{quantity:2}]};
-  //     const criteria = {'products.quantity': 1};
-  //     const eligibilityService = new EligibilityService();
-  //     const actualEligibility = eligibilityService.isEligible(cart, criteria);
-  //     should(actualEligibility).be.false();
-  //   });
-  //   it('should be eligible when array sub object condition is fulfilled', () => {
-  //     const cart = {products:[{quantity:1}]};
-  //     const criteria = {'products.quantity': 1};
-  //     const eligibilityService = new EligibilityService();
-  //     const actualEligibility = eligibilityService.isEligible(cart, criteria);
-  //     should(actualEligibility).be.true();
-  //   });
-  //   it('should be eligible when array sub object condition with two elements is fulfilled for first element', () => {
-  //     const cart = {products:[{quantity:1}, {quantity: 2}]};
-  //     const criteria = {'products.quantity': 1};
-  //     const eligibilityService = new EligibilityService();
-  //     const actualEligibility = eligibilityService.isEligible(cart, criteria);
-  //     should(actualEligibility).be.true();
-  //   });
-  //   it('should be eligible when array sub object condition with two elements is fulfilled for second element', () => {
-  //     const cart = {products:[{quantity:1}, {quantity: 2}]};
-  //     const criteria = {'products.quantity': 2};
-  //     const eligibilityService = new EligibilityService();
-  //     const actualEligibility = eligibilityService.isEligible(cart, criteria);
-  //     should(actualEligibility).be.true();
-  //   });
-  //   it('should be eligible when array sub object condition with two elements is not fulfilled', () => {
-  //     const cart = {products:[{quantity:1}, {quantity: 2}]};
-  //     const criteria = {'products.quantity': 3};
-  //     const eligibilityService = new EligibilityService();
-  //     const actualEligibility = eligibilityService.isEligible(cart, criteria);
-  //     should(actualEligibility).be.false();
-  //   });
-  // });
+  describe("Sub-object condition", () => {
+    it("should not be eligible when sub object condition is not fulfilled (first level field does not exist)", () => {
+      const cart = {};
+      const criteria = { "products.quantity": 1 };
+      const eligibilityService = new EligibilityService();
+      const actualEligibility = eligibilityService.isEligible(cart, criteria);
+      should(actualEligibility).be.false();
+    });
+    it("should not be eligible when sub object condition is not fulfilled (second level field does not exist)", () => {
+      const cart = { products: {} };
+      const criteria = { "products.quantity": 1 };
+      const eligibilityService = new EligibilityService();
+      const actualEligibility = eligibilityService.isEligible(cart, criteria);
+      should(actualEligibility).be.false();
+    });
+    it("should not be eligible when sub object condition is not fulfilled (wrong value)", () => {
+      const cart = { products: { quantity: 2 } };
+      const criteria = { "products.quantity": 1 };
+      const eligibilityService = new EligibilityService();
+      const actualEligibility = eligibilityService.isEligible(cart, criteria);
+      should(actualEligibility).be.false();
+    });
+    it("should be eligible when sub object condition is fulfilled", () => {
+      const cart = { products: { quantity: 1 } };
+      const criteria = { "products.quantity": 1 };
+      const eligibilityService = new EligibilityService();
+      const actualEligibility = eligibilityService.isEligible(cart, criteria);
+      should(actualEligibility).be.true();
+    });
+    it("should not be eligible when array sub object condition is not fulfilled", () => {
+      const cart = { products: [{ quantity: 2 }] };
+      const criteria = { "products.quantity": 1 };
+      const eligibilityService = new EligibilityService();
+      const actualEligibility = eligibilityService.isEligible(cart, criteria);
+      should(actualEligibility).be.false();
+    });
+    it("should be eligible when array sub object condition is fulfilled", () => {
+      const cart = { products: [{ quantity: 1 }] };
+      const criteria = { "products.quantity": 1 };
+      const eligibilityService = new EligibilityService();
+      const actualEligibility = eligibilityService.isEligible(cart, criteria);
+      should(actualEligibility).be.true();
+    });
+    it("should be eligible when array sub object condition with two elements is fulfilled for first element", () => {
+      const cart = { products: [{ quantity: 1 }, { quantity: 2 }] };
+      const criteria = { "products.quantity": 1 };
+      const eligibilityService = new EligibilityService();
+      const actualEligibility = eligibilityService.isEligible(cart, criteria);
+      should(actualEligibility).be.true();
+    });
+    it("should be eligible when array sub object condition with two elements is fulfilled for second element", () => {
+      const cart = { products: [{ quantity: 1 }, { quantity: 2 }] };
+      const criteria = { "products.quantity": 2 };
+      const eligibilityService = new EligibilityService();
+      const actualEligibility = eligibilityService.isEligible(cart, criteria);
+      should(actualEligibility).be.true();
+    });
+    it("should be eligible when array sub object condition with two elements is not fulfilled", () => {
+      const cart = { products: [{ quantity: 1 }, { quantity: 2 }] };
+      const criteria = { "products.quantity": 3 };
+      const eligibilityService = new EligibilityService();
+      const actualEligibility = eligibilityService.isEligible(cart, criteria);
+      should(actualEligibility).be.false();
+    });
+  });
 
-  // describe('Complex cases', () => {
-  //   it('should be eligible with example values', () => {
-  //     const cart = {
-  //       "cartId": "cart-id",
-  //       "shopperId": "shopper-id",
-  //       "date": "2021-10-06T18:35:42.000Z",
-  //       "totalAti": 99.80,
-  //       "promoCode": "voucher-42",
-  //       "products": [
-  //         {
-  //           "productId": "5449000054227",
-  //           "quantity": 20,
-  //           "unitPriceAti": 2.5,
-  //           "totalPriceAti": 50
-  //         },
-  //         {
-  //           "productId": "3099873045369",
-  //           "quantity": 2,
-  //           "unitPriceAti": 24.90,
-  //           "totalPriceAti": 49.80
-  //         }
-  //       ]
-  //     }
-  //     const criteria = {
-  //       "shopperId": "shopper-id",
-  //       "totalAti": {
-  //         "gt": 50
-  //       },
-  //       "products.productId": {
-  //         "in": ["5449000054227"]
-  //       },
-  //       "date": {
-  //         "and": {
-  //           "gt": "2021-11-01T00:00:00.000Z",
-  //           "lt": "2021-12-31T23:59:59.000Z"
-  //         }
-  //       }
-  //     };
-  //     const eligibilityService = new EligibilityService();
-  //     const actualEligibility = eligibilityService.isEligible(cart, criteria);
-  //     should(actualEligibility).be.false();
-  //   });
-  // });
+  describe("Complex cases", () => {
+    it("should be eligible with example values", () => {
+      const cart = {
+        cartId: "cart-id",
+        shopperId: "shopper-id",
+        date: "2021-10-06T18:35:42.000Z",
+        totalAti: 99.8,
+        promoCode: "voucher-42",
+        products: [
+          {
+            productId: "5449000054227",
+            quantity: 20,
+            unitPriceAti: 2.5,
+            totalPriceAti: 50,
+          },
+          {
+            productId: "3099873045369",
+            quantity: 2,
+            unitPriceAti: 24.9,
+            totalPriceAti: 49.8,
+          },
+        ],
+      };
+      const criteria = {
+        shopperId: "shopper-id",
+        totalAti: {
+          gt: 50,
+        },
+        "products.productId": {
+          in: ["5449000054227"],
+        },
+        date: {
+          and: {
+            gt: "2021-11-01T00:00:00.000Z",
+            lt: "2021-12-31T23:59:59.000Z",
+          },
+        },
+      };
+      const eligibilityService = new EligibilityService();
+      const actualEligibility = eligibilityService.isEligible(cart, criteria);
+      should(actualEligibility).be.false();
+    });
+  });
 });

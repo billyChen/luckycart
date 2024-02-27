@@ -1,4 +1,4 @@
-const ICondition = require("./ICondition");
+const { ICondition } = require("./ICondition");
 
 class InCondition extends ICondition {
   constructor(key, expectedValues) {
@@ -8,7 +8,8 @@ class InCondition extends ICondition {
   }
 
   evaluate(cartEligibility) {
-    return this.expectedValues.includes(cartEligibility[this.key]);
+    const value = this.getValueByPath(cartEligibility, this.key);
+    return this.expectedValues.includes(value);
   }
 }
 

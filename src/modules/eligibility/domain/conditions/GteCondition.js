@@ -1,4 +1,4 @@
-const ICondition = require("./ICondition");
+const { ICondition } = require("./ICondition");
 
 class GteCondition extends ICondition {
   constructor(key, expectedValue) {
@@ -8,7 +8,7 @@ class GteCondition extends ICondition {
   }
 
   evaluate(cartEligibility) {
-    const attributeValue = cartEligibility[this.key];
+    const attributeValue = this.getValueByPath(cartEligibility, this.key);
     return attributeValue >= this.expectedValue;
   }
 }

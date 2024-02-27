@@ -1,4 +1,4 @@
-const ICondition = require("./ICondition");
+const { ICondition } = require("./ICondition");
 
 class AndCondition extends ICondition {
   constructor(conditions) {

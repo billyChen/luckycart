@@ -1,4 +1,4 @@
-const ICondition = require("./ICondition");
+const { ICondition } = require("./ICondition");
 
 class OrCondition extends ICondition {
   constructor(conditions) {

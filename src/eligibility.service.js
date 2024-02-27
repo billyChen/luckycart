@@ -1,6 +1,6 @@
-const EligibilityRules = require("./domain/eligibility/EligibilityRules");
-const CartEligibilityMapper = require("./mappers/CartEligibilityMapper");
-const CriteriaMapper = require("./mappers/CriteriaMapper");
+const EligibilityRules = require("./modules/eligibility/domain/EligibilityRules");
+const CartEligibilityMapper = require("./modules/eligibility/mappers/CartEligibilityMapper");
+const CriteriaMapper = require("./modules/eligibility/mappers/CriteriaMapper");
 
 class EligibilityService {
   /**
@@ -12,10 +12,18 @@ class EligibilityService {
    * @return {boolean}
    */
   isEligible(cartDto, criteriaDto) {
-    const cartEligibility = CartEligibilityMapper.toDomain(cartDto);
-    const criterias = CriteriaMapper.toDomain(criteriaDto);
+    try {
+      const cartEligibility = CartEligibilityMapper.toDomain(cartDto);
+      const criterias = CriteriaMapper.toDomain(criteriaDto);
 
-    return EligibilityRules.check(cartEligibility, criterias);
+      return EligibilityRules.check(cartEligibility, criterias);
+    } catch (error) {
+      if (error instanceof CriteriaNotFoundError) {
+        throw new Error(error.message);
+      }
+
+      throw new Error("Error while evaluating isEligible", error);
+    }
   }
 }
 
