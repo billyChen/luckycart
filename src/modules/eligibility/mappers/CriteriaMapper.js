@@ -47,8 +47,10 @@ class CriteriaMapper {
       if (!conditionTypeToClassMap[conditionKey])
         throw new CriteriaNotSupportedError(value);
 
-      const ConditionClass = conditionTypeToClassMap[conditionKey];
-      return new ConditionClass(key, value[conditionKey]);
+      return new conditionTypeToClassMap[conditionKey](
+        key,
+        value[conditionKey]
+      );
     });
   }
 
@@ -62,18 +64,11 @@ class CriteriaMapper {
 
   static mapNestedConditions(key, conditionKey) {
     return Object.entries(conditionKey).map(([nestedKey, nestedValue]) => {
-      switch (nestedKey) {
-        case "gt":
-          return new GtCondition(key, nestedValue);
-        case "gte":
-          return new GteCondition(key, nestedValue);
-        case "lt":
-          return new LtCondition(key, nestedValue);
-        case "lte":
-          return new LteCondition(key, nestedValue);
-        case "in":
-          return new InCondition(key, nestedValue);
-      }
+      const condition = conditionTypeToClassMap[nestedKey];
+
+      if (!condition) throw new CriteriaNotSupportedError();
+
+      return new conditionTypeToClassMap[nestedKey](key, nestedValue);
     });
   }
 }
