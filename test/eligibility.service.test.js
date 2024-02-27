@@ -15,7 +15,7 @@ describe("Eligibility", () => {
   describe("Basic condition", () => {
     it("should not be eligible when basic integer condition is not fulfilled (does not exist)", () => {
       const cart = {};
-      const criteria = { total: 20 };
+      const criteria = { total: { babababa: 20 } };
       const eligibilityService = new EligibilityService();
       const actualEligibility = eligibilityService.isEligible(cart, criteria);
       should(actualEligibility).be.false();

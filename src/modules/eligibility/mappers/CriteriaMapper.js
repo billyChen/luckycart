@@ -45,7 +45,7 @@ class CriteriaMapper {
       }
 
       if (!conditionTypeToClassMap[conditionKey])
-        throw new CriteriaNotSupportedError(value);
+        throw new CriteriaNotSupportedError(conditionKey);
 
       return new conditionTypeToClassMap[conditionKey](
         key,
@@ -66,7 +66,7 @@ class CriteriaMapper {
     return Object.entries(conditionKey).map(([nestedKey, nestedValue]) => {
       const condition = conditionTypeToClassMap[nestedKey];
 
-      if (!condition) throw new CriteriaNotSupportedError();
+      if (!condition) throw new CriteriaNotSupportedError(nestedKey);
 
       return new conditionTypeToClassMap[nestedKey](key, nestedValue);
     });

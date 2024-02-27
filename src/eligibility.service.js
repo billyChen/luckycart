@@ -1,4 +1,5 @@
 const EligibilityRules = require("./modules/eligibility/domain/EligibilityRules");
+const CriteriaNotSupportedError = require("./modules/eligibility/domain/errors/CriteriaNotSupportedError");
 const CartEligibilityMapper = require("./modules/eligibility/mappers/CartEligibilityMapper");
 const CriteriaMapper = require("./modules/eligibility/mappers/CriteriaMapper");
 
@@ -18,7 +19,7 @@ class EligibilityService {
 
       return EligibilityRules.check(cartEligibility, criterias);
     } catch (error) {
-      if (error instanceof CriteriaNotFoundError) {
+      if (error instanceof CriteriaNotSupportedError) {
         throw new Error(error.message);
       }
 
